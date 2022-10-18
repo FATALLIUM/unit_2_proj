@@ -40,19 +40,23 @@ public class Main {
         y2 = Integer.parseInt(splitCoord2[1]);
 
 
-
         // run code here
-        LinearEquation equation = new LinearEquation(x1, y1, x2, y2);
-        System.out.println("Equation: " + equation.equation());
-        System.out.println("Slope: " + equation.slope());
-        System.out.println("y-intercept: " + equation.yIntercept());
-        System.out.println("Distance: " + equation.distance());
-        System.out.println();
-        System.out.println("----- Line info -----");
-        System.out.println(equation.lineInfo());
-        System.out.println();
-        double testX = 4;
-        System.out.println("Coordinate for x: " + equation.coordinateForX(testX));
-
+        if (x1 == x2) {
+            System.out.println("These points are on a vertical line: " + x1);
+        }
+        else {
+            LinearEquation equation = new LinearEquation(x1, y1, x2, y2);
+            System.out.println("Equation: " + equation.equation());
+            System.out.println("Slope: " + equation.slope());
+            System.out.println("y-intercept: " + equation.yIntercept());
+            System.out.println("Distance: " + equation.distance());
+            System.out.println();
+            System.out.println("----- Line info -----");
+            System.out.println(equation.lineInfo());
+            System.out.println();
+            System.out.println("Enter coord for x: ");
+            double coordX = scan.nextDouble();
+            System.out.println("Coordinate for x: " + equation.coordinateForX(coordX));
+        }
     }
 }
