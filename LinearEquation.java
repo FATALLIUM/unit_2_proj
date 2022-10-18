@@ -15,19 +15,18 @@ public class LinearEquation {
 
 
     public double distance() {
-        double distance = roundedToHundredth(Math.sqrt(Math.pow(x2-x1,2) + Math.pow(y2-y1,2)));
+        return roundedToHundredth(Math.sqrt(Math.pow(x2-x1,2) + Math.pow(y2-y1,2)));
     }
 
 
     public double yIntercept() {
-        double yInt = roundedToHundredth(y1-x1*slope());
-        return yInt;
+        return roundedToHundredth(y1-x1*slope());
+
     }
 
 
     public double slope() {
-        double slope = roundedToHundredth((double) (y2-y1)/(x2-x1));
-        return slope;
+        return roundedToHundredth((double) (y2-y1)/(x2-x1));
     }
 
 
@@ -55,11 +54,9 @@ public class LinearEquation {
     }
 
 
-
-    /* Returns a String of the coordinate point on the line that has the given x value, with
-       both x and y coordinates as decimals to the nearest hundredth, e.g (-5.0, 6.75) */
     public String coordinateForX(double xValue) {
-
+        double yValue = slope()*xValue + yIntercept();
+        return "(" + xValue + ", " + yValue + ")";
     }
 
 
