@@ -30,27 +30,22 @@ public class LinearEquation {
     }
 
     public String decimalToFraction() {
-        double slope = slope() * 1000;
+        int num = (int) (slope() * 1000);
         int denom = 100;
         int gcd = 1;
 
-        for (int i = 1; i <= slope && i <= denom; i++) {
-            if (slope % i == 0 && denom % i == 0) {
-                gcd = i;
+        for (int i = 1; i <= num && i <= denom; i++) {
+            if (num % i == 0 && denom % i == 0) {
+                gcd = i++;
             }
         }
-        if (gcd == 1) {
-            return "" + slope();
-        }
-        else {
-            return (int) (slope/gcd) + "/" + denom/gcd + " " + gcd;
-        }
+        return num/gcd + "/" + denom/gcd + " " + gcd;
     }
 
 
     public String equation() {
         if (y2 == y1) {
-            return "" + y2;
+            return "y = " + y2;
         }
         if (yIntercept() == 0) {
             return "y = " + decimalToFraction() + "x";
