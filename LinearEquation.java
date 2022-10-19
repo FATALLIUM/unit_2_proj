@@ -31,15 +31,21 @@ public class LinearEquation {
 
     public String decimalToFraction() {
         int num = (int) (slope() * 1000);
-        int denom = 100;
-        int gcd = 1;
+        int denom = 1000;
+        int gcd = gcd(num, denom);
+        num /= gcd;
+        denom /= gcd;
+        return num + "/" + denom;
+    }
 
+    public int gcd(int num, int denom) {
+        int gcd = 1;
         for (int i = 1; i <= num && i <= denom; i++) {
             if (num % i == 0 && denom % i == 0) {
-                gcd = i++;
+                gcd = i;
             }
         }
-        return num/gcd + "/" + denom/gcd + " " + gcd;
+        return gcd;
     }
 
 
