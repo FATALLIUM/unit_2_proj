@@ -1,3 +1,5 @@
+import javax.management.StringValueExp;
+
 public class LinearEquation {
     /* Instance Variables */
     private int x1;
@@ -30,22 +32,42 @@ public class LinearEquation {
     }
 
 
-    public String decimalToFraction() {
-        int num = (int) (slope() * 100000);
-        int denom = 100000;
-        int gcd = gcd(num, denom);
-        num /= gcd;
-        return num + "/" + denom/gcd;
-    }
-
-    public int gcd(int num, int denom) {
+    public int gcd(int a, int b) {
         int gcd = 1;
-        for (int i = 1; i <= num && i <= denom; i++) {
-            if (num % i == 0 && denom % i == 0) {
+        for (int i = 1; i <= a && i <= b; i++) {
+            if (a % i == 0 && b % i == 0) {
                 gcd = i;
             }
         }
         return gcd;
+    }
+
+
+
+    public String decimalToFraction() {
+        String slope = "" + slope();
+        String[] intFrac = slope.split("\\.");
+
+        int num = Integer.parseInt(intFrac[0]) * 100 + Integer.parseInt(intFrac[1]);
+        int denom = 100;
+
+        int gcd = gcd(num, denom);
+
+
+        num = num/gcd;
+        denom = denom/gcd;
+
+        String repDec = String.valueOf((double) num/denom);
+        String[] repDec1 = repDec.split("\\.");
+        if (repDec1[0].indexOf(repDec1[0]) == repDec1[0].) {
+            gcd = gcd(num, 9);
+            return num/gcd + "/" + denom/gcd;
+        }
+        if (num % denom == 0) {
+            return "" + num/gcd;
+        }
+
+        return num + "/" + denom;
     }
 
 
