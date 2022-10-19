@@ -29,23 +29,36 @@ public class LinearEquation {
         return roundedToHundredth((double) (y2-y1)/(x2-x1));
     }
 
+    public String decimalToFraction() {
+        double slope = slope() * 1000;
+        int denom = 100;
+        int gcd = 1;
+
+        for (int i = 1; i <= slope && i <= denom; i++) {
+            if (slope % i == 0 && denom % i == 0) {
+                gcd = i;
+            }
+        }
+        if (gcd == 1) {
+            return "" + slope();
+        }
+        else {
+            return (int) (slope/gcd) + "/" + denom/gcd + " " + gcd;
+        }
+    }
+
 
     public String equation() {
-        String slope = "" + slope();
-        String[] slope1 = slope.split("\\.");
-        int numer = Integer.parseInt(slope1[0]) * 10 / 5;
-        int denom = Integer.parseInt(slope1[1]) * 10 / 5; // fix this
-        slope = numer + "/" +  denom;
         if (y2 == y1) {
             return "" + y2;
         }
         if (yIntercept() == 0) {
-            return "y = " + slope + "x";
+            return "y = " + decimalToFraction() + "x";
         }
         if (yIntercept() != -yIntercept()) {
-            return "y = " + slope + "x + " + yIntercept();
+            return "y = " + decimalToFraction() + "x + " + yIntercept();
         }
-        return "y = " + slope + "x ";
+        return "y = " + decimalToFraction() + "x ";
     }
 
 
@@ -53,7 +66,6 @@ public class LinearEquation {
         double yValue = roundedToHundredth(slope()*xValue + yIntercept());
         return "(" + xValue + ", " + yValue + ")";
     }
-
 
     public double roundedToHundredth(double toRound) {
         return (double) Math.round(toRound * 100)/100;
