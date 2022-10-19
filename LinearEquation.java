@@ -29,13 +29,13 @@ public class LinearEquation {
         return roundedToHundredth((double) (y2-y1)/(x2-x1));
     }
 
+
     public String decimalToFraction() {
-        int num = (int) (slope() * 1000);
-        int denom = 1000;
+        int num = (int) (slope() * 100000);
+        int denom = 100000;
         int gcd = gcd(num, denom);
         num /= gcd;
-        denom /= gcd;
-        return num + "/" + denom;
+        return num + "/" + denom/gcd;
     }
 
     public int gcd(int num, int denom) {
