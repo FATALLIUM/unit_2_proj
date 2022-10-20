@@ -53,18 +53,11 @@ public class LinearEquation {
 
         int gcd = gcd(num, denom);
 
-
         num = num/gcd;
         denom = denom/gcd;
 
-        String repDec = String.valueOf((double) num/denom);
-        String[] repDec1 = repDec.split("\\.");
-        if (repDec1[0].indexOf(repDec1[0]) == repDec1[0].) {
-            gcd = gcd(num, 9);
-            return num/gcd + "/" + denom/gcd;
-        }
         if (num % denom == 0) {
-            return "" + num/gcd;
+            return "" + num/denom;
         }
 
         return num + "/" + denom;
@@ -75,13 +68,20 @@ public class LinearEquation {
         if (y2 == y1) {
             return "y = " + y2;
         }
+        if (slope() == 0 || slope() == 1) {
+        } if (yIntercept() == 0) {
+            return "y = " + "x ";
+        }
+
         if (yIntercept() == 0) {
             return "y = " + decimalToFraction() + "x";
         }
-        if (yIntercept() != -yIntercept()) {
+        if (String.valueOf(yIntercept()).charAt(0) == '-') {
+            return "y = " + decimalToFraction() + "x " + yIntercept();
+        }
+        else {
             return "y = " + decimalToFraction() + "x + " + yIntercept();
         }
-        return "y = " + decimalToFraction() + "x ";
     }
 
 
