@@ -43,7 +43,7 @@ public class Main {
 
         // run code here
         if (x1 == x2) {
-            System.out.println("These points are on a vertical line: " + x1);
+            System.out.println("These points are on a vertical line: x = " + x1);
         }
         else {
             LinearEquation equation = new LinearEquation(x1, y1, x2, y2);
