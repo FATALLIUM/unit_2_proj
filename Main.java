@@ -11,6 +11,7 @@ public class Main {
         System.out.println("Enter coord 2: ");
         String coord2 = scan.nextLine();
 
+        // uninitialized variables
         int x1;
         int x2;
         int y1;
@@ -29,7 +30,7 @@ public class Main {
             coord2 = coord2.replace(" ", "");
         }
 
-        // splitting the coords into x and y in array
+        // splitting the coords into x and y into an array
         String[] splitCoord1 = coord1.split(",");
         String[] splitCoord2 = coord2.split(",");
 
